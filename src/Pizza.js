@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Pizza = (props) => {
-    const {formValues, change, submit} = props;
+    const {formValues, change, submit, errors, disabled} = props;
 
     const onChange = (evt) => {
         const { name, value, type, checked, } = evt.target;
@@ -14,6 +14,8 @@ const Pizza = (props) => {
         <>
         <h1>Pizza Order</h1>
         <form onSubmit={submit}>
+            {/* Form errors */}
+            <div>{errors.name}</div>
             {/* Name */}
             <label className='name'>
                 Name:
@@ -54,7 +56,7 @@ const Pizza = (props) => {
                 <input type='text' name='instructions' value={formValues.instructions} onChange={onChange} />
             </label>
             {/* Submit button *add disabled slice of state here */}
-            <button>Add to order</button>
+            <button disabled={disabled}>Add to order</button>
         </form>
         </>
     )

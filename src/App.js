@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import * as yup from 'yup';
+import schema from './FormSchema'
 import Orders from "./Orders";
-
 import Pizza from './Pizza'
 
 // Link up Pizza Form and App
@@ -30,15 +31,31 @@ const [order, setOrder] = useState(emptyPizzaOrder);
 const [disabled, setDisabled] = useState(btnDisabled);
 const [errors, setErrors] = useState(emptyErrors)
 
+// Schema Validation function
+const validate = (name, value) => {
+  yup
+  .reach(schema, name)
+  .validate(value)
+  .then(valid => {
+    setErrors(emptyErrors)
+  })
+  .catch(err => {
+    setErrors({
+      ...errors,
+      [name]: err.errors[0]
+    })
+  })
+};
 
-
+// Form Input Change Function
   const inputChange = (name, value) => {
+    validate(name, value)
     setFormValues({
       ...formValues,
       [name]: value
     })
   }
-
+// Submit Form Function
   const submit = (evt) => {
     evt.preventDefault();
     const newOrder = {
@@ -50,8 +67,18 @@ const [errors, setErrors] = useState(emptyErrors)
     setOrder(order.concat(newOrder))
     setFormValues(emptyPizzaOrderForm)
   }
-  const history = useHistory();
 
+  // Button disabler useEffect
+  useEffect(() => {
+    schema.isValid(formValues)
+    .then(valid => {
+      setDisabled(!valid)
+    })
+  }, [formValues])
+
+
+  // Routing function
+  const history = useHistory();
   const routeToPizza = () => {
     history.push('/pizza')
   }
@@ -65,7 +92,9 @@ const [errors, setErrors] = useState(emptyErrors)
        <Pizza 
       formValues={formValues} 
       change={inputChange}
-      submit={submit} /> 
+      submit={submit}
+      errors={errors}
+      disabled={disabled} /> 
       
       </Route>
       <Route path={'/pizza'}>
