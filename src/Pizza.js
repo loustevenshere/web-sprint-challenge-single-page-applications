@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Pizza.css";
 
 const Pizza = (props) => {
     const {formValues, change, submit, errors, disabled} = props;
@@ -11,7 +12,7 @@ const Pizza = (props) => {
 
   
     return (
-        <>
+        <div className="pizzaorder">
         <h1>Pizza Order</h1>
         <form onSubmit={submit}>
             {/* Form errors */}
@@ -58,7 +59,7 @@ const Pizza = (props) => {
             {/* Submit button *add disabled slice of state here */}
             <button disabled={disabled}>Add to order</button>
         </form>
-        </>
+        </div>
     )
 }
 

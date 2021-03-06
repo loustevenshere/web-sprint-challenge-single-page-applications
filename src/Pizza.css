@@ -1,0 +1,48 @@
+      /* <div className="pizzaorder">
+        <h1>Pizza Order</h1>
+        <form onSubmit={submit}>
+            {/* Form errors */
+            /* <div>{errors.name}</div>
+            {Name}
+            /* <label className='name'>
+                Name:
+                <input type='text' name='name' onChange={onChange} value={formValues.name} /> */
+            /* </label> */
+            /* {Pizza Size} */
+            /* <label className='pizza-size'>
+                Pizza Size:
+                <select name='size' value={formValues.size} onChange={onChange}>
+                    <option value=''>----Pick your Pizza Size----</option>
+                    <option value='small'>Small</option>
+                    <option value='medium'>Medium</option>
+                    <option value='large'>Large</option>
+                    <option value='x-large'>X-Large</option>
+                </select>
+      /* */ 
+
+      .pizzaorder{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid black;
+      }
+
+      h1 {
+          font-style: italic;
+          text-decoration: underline;
+          display: flex;
+          flex-direction: column;
+      }
+
+      form {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+      }
+
+      label {
+          margin: 3%;
+          font-weight: 500;
+      }

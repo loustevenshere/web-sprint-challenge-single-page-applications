@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import schema from './FormSchema'
 import Orders from "./Orders";
 import Pizza from './Pizza'
+import './App.css';
 
 // Link up Pizza Form and App
 const App = () => {
@@ -80,14 +81,16 @@ const validate = (name, value) => {
   // Routing function
   const history = useHistory();
   const routeToPizza = () => {
-    history.push('/pizza')
+    return history.push('/pizza')
   }
   return (
-    <>
-      <h1>Lambda Pizza</h1>
+    <div className="pizzalogin">
+      <h1>Lambda Pizza🍕</h1>
       <h3>Hot and Juicy</h3>
-      <Link to='/'>Home</Link>
+      <Link className="link" to='/'>Home</Link>
+     
       <button onClick={routeToPizza}>Hot Pizza</button>
+ 
       <Route path={'/pizza'}>
        <Pizza 
       formValues={formValues} 
@@ -95,18 +98,11 @@ const validate = (name, value) => {
       submit={submit}
       errors={errors}
       disabled={disabled} /> 
-      
-      </Route>
-      <Route path={'/pizza'}>
-        {
-          order.map(pizzaorder => {
+        {order.map(pizzaorder => {
             return (
-              <Orders key={order[pizzaorder]} orders={pizzaorder} />
-            )
-          })
-        }
+              <Orders key={order[pizzaorder]} orders={pizzaorder} />)})}
       </Route>
-    </>
+    </div>
   );
 };
 export default App;

@@ -1,38 +1,42 @@
-.App {
-  text-align: center;
-}
+/* <h1>Lambda Pizza</h1>
+      <h3>Hot and Juicy</h3>
+      <Link to='/'>Home</Link>
+      <button onClick={routeToPizza}>Hot Pizza</button> */
+     .pizzalogin {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+      justify-content: center;
+      width: auto;
+      margin: 10%;
+      border: 1px solid black;
+      background-color: darkred;
+      height: 100%;
+     }
+     
+      h1 {
+        text-align: center;
+        font-weight: 600;
+        font-size: 3rem;
+        color: darkblue;
+      }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+      h3 {
+        text-align: center;
+        text-decoration: seagreen;
+        text-shadow: skyblue 1px;
+        border: palevioletred 2px dotted;
+      }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+      button {
+        text-transform: capitalize;
+        color: black;
+        text-decoration: wavy;
+        border: 1px;
+        border-top: 10px;
+      }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+      .link {
+        border-bottom: 2%;
+      }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
